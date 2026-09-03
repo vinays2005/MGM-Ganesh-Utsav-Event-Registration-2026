@@ -504,7 +504,7 @@ document.getElementById("regForm").addEventListener("submit", async function (e)
   e.preventDefault();
 
   // Basic validation
-  const required = ["name","email","whatsapp","building","wing","flatno","numParticipants"];
+  const required = ["name","whatsapp","building","wing","flatno","numParticipants"];
   let valid = true;
   required.forEach(id => {
     const el = document.getElementById(id);
