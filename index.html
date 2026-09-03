@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>MGM Ganesh Utsav 2026 – Event Registration</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Tiro+Devanagari+Sanskrit&display=swap');
+
+  :root {
+    --saffron: #FF6B00;
+    --deep-saffron: #E55A00;
+    --gold: #FFB300;
+    --light-gold: #FFF3CD;
+    --maroon: #8B0000;
+    --cream: #FFF8F0;
+    --card-bg: #FFFFFF;
+    --text: #1A1A1A;
+    --muted: #6B6B6B;
+    --border: #E0D5C5;
+    --success: #2E7D32;
+    --error: #C62828;
+    --radius: 12px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Poppins', sans-serif;
+    background: var(--cream);
+    color: var(--text);
+    min-height: 100vh;
+  }
+
+  /* ── HEADER ── */
+  .header {
+    background: linear-gradient(135deg, var(--maroon) 0%, #5C0000 50%, var(--maroon) 100%);
+    padding: 36px 20px 30px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .header::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: repeating-linear-gradient(
+      45deg, transparent, transparent 20px,
+      rgba(255,179,0,0.06) 20px, rgba(255,179,0,0.06) 40px
+    );
+  }
+  .om {
+    font-size: 46px;
+    color: var(--gold);
+    display: block;
+    margin-bottom: 8px;
+    text-shadow: 0 0 24px rgba(255,179,0,0.55);
+    font-family: 'Tiro Devanagari Sanskrit', serif;
+    position: relative;
+  }
+  .header h1 {
+    font-size: clamp(19px, 5vw, 27px);
+    font-weight: 700;
+    color: #FFF;
+    line-height: 1.35;
+    position: relative;
+  }
+  .header h1 span { color: var(--gold); }
+  .header p {
+    color: rgba(255,255,255,0.72);
+    font-size: 13px;
+    margin-top: 7px;
+    position: relative;
+  }
+  .header-divider {
+    margin: 16px auto 0;
+    width: 130px; height: 2px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    position: relative;
+  }
+
+  /* ── CONTAINER ── */
+  .container {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 28px 16px 56px;
+  }
+
+  /* ── SECTION ── */
+  .section {
+    background: var(--card-bg);
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    padding: 24px 22px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+  }
+  .section-title {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--maroon);
+    text-transform: uppercase;
+    letter-spacing: 0.9px;
+    margin-bottom: 18px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--light-gold);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  /* ── FIELDS ── */
+  .field { margin-bottom: 16px; }
+  .field:last-child { margin-bottom: 0; }
+  .field label {
+    display: block;
+    font-size: 13px;
+    font-weight: 500;
+    margin-bottom: 6px;
+  }
+  .req { color: var(--saffron); margin-left: 2px; }
+  .field input,
+  .field select {
+    width: 100%;
+    padding: 10px 14px;
+    border: 1.5px solid var(--border);
+    border-radius: 8px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    color: var(--text);
+    background: #FAFAFA;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+  .field input:focus,
+  .field select:focus {
+    border-color: var(--saffron);
+    box-shadow: 0 0 0 3px rgba(255,107,0,0.1);
+    background: #FFF;
+  }
+  .field input.invalid {
+    border-color: var(--error);
+    box-shadow: 0 0 0 3px rgba(198,40,40,0.1);
+  }
+  .err-msg {
+    font-size: 11.5px;
+    color: var(--error);
+    margin-top: 4px;
+    display: none;
+  }
+  .field input.invalid + .err-msg { display: block; }
+
+  .row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .row-3 { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 14px; }
+
+  /* ── CHECKBOX PILLS ── */
+  .pill-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 4px;
+  }
+  .pill {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 7px 13px;
+    border: 1.5px solid var(--border);
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 13px;
+    background: #FAFAFA;
+    user-select: none;
+    transition: all 0.15s;
+  }
+  .pill input[type="checkbox"] {
+    accent-color: var(--saffron);
+    width: 14px; height: 14px;
+    cursor: pointer;
+  }
+  .pill:has(input:checked) {
+    border-color: var(--saffron);
+    background: #FFF3E8;
+    color: var(--deep-saffron);
+    font-weight: 500;
+  }
+
+  /* ── PARTICIPANT CARD ── */
+  .p-card {
+    background: #FFFAF5;
+    border: 1.5px solid #FFE0C0;
+    border-radius: 10px;
+    padding: 16px 16px 14px;
+    margin-bottom: 12px;
+  }
+  .p-card:last-child { margin-bottom: 0; }
+  .p-card-title {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--saffron);
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .p-num {
+    width: 24px; height: 24px;
+    background: var(--saffron);
+    color: #FFF;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  /* ── HINT ── */
+  .hint {
+    font-size: 12px;
+    color: var(--muted);
+    margin-top: 6px;
+    line-height: 1.5;
+  }
+
+  /* ── SUBMIT ── */
+  .submit-btn {
+    width: 100%;
+    padding: 16px;
+    background: linear-gradient(135deg, var(--saffron), var(--deep-saffron));
+    color: #FFF;
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    border: none;
+    border-radius: var(--radius);
+    cursor: pointer;
+    box-shadow: 0 4px 18px rgba(255,107,0,0.38);
+    transition: transform 0.15s, box-shadow 0.15s, opacity 0.15s;
+    margin-top: 4px;
+  }
+  .submit-btn:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 22px rgba(255,107,0,0.48);
+  }
+  .submit-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+
+  /* ── SPINNER ── */
+  .spinner {
+    display: inline-block;
+    width: 16px; height: 16px;
+    border: 2px solid rgba(255,255,255,0.4);
+    border-top-color: #FFF;
+    border-radius: 50%;
+    animation: spin 0.7s linear infinite;
+    vertical-align: middle;
+    margin-right: 6px;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  /* ── TOAST ── */
+  .toast {
+    position: fixed;
+    bottom: 28px; left: 50%;
+    transform: translateX(-50%) translateY(90px);
+    padding: 14px 26px;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #FFF;
+    z-index: 9999;
+    transition: transform 0.3s cubic-bezier(.34,1.56,.64,1);
+    max-width: 92vw;
+    text-align: center;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+  }
+  .toast.show { transform: translateX(-50%) translateY(0); }
+  .toast.success { background: var(--success); }
+  .toast.error   { background: var(--error); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 500px) {
+    .row-2 { grid-template-columns: 1fr; }
+    .row-3 { grid-template-columns: 1fr 1fr; }
+    .row-3 .field:first-child { grid-column: 1 / -1; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header">
+  <span class="om">ॐ</span>
+  <h1>MGM Ganesh Utsav<br><span>Event Registration 2026</span></h1>
+  <p>Fill in your details below to register for the celebration 🪔</p>
+  <div class="header-divider"></div>
+</div>
+
+<div class="container">
+<form id="regForm" novalidate>
+
+  <!-- REGISTRANT -->
+  <div class="section">
+    <div class="section-title">👤 Registrant Details</div>
+
+    <div class="field">
+      <label>Full Name <span class="req">*</span></label>
+      <input type="text" id="name" placeholder="Your full name" required />
+    </div>
+
+    <div class="row-2">
+      <div class="field">
+        <label>Email Address <span class="req">*</span></label>
+        <input type="email" id="email" placeholder="you@example.com" required />
+      </div>
+      <div class="field">
+        <label>WhatsApp Number <span class="req">*</span></label>
+        <input type="tel" id="whatsapp" placeholder="10-digit number"
+               maxlength="10" pattern="[0-9]{10}" required />
+        <div class="err-msg">Enter valid 10-digit number</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ADDRESS -->
+  <div class="section">
+    <div class="section-title">🏠 Flat Details</div>
+    <div class="row-3">
+      <div class="field">
+        <label>Building <span class="req">*</span></label>
+        <select id="building" required>
+          <option value="">— Select Building —</option>
+          <option value="Genevieve">Genevieve</option>
+          <option value="Morgana">Morgana</option>
+          <option value="Muriel">Muriel</option>
+        </select>
+      </div>
+      <div class="field">
+        <label>Wing <span class="req">*</span></label>
+        <select id="wing" required disabled>
+          <option value="">— Select Wing —</option>
+        </select>
+      </div>
+      <div class="field">
+        <label>Flat No <span class="req">*</span></label>
+        <select id="flatno" required>
+          <option value="">— Select Flat —</option>
+          <optgroup label="Ground Floor">
+            <option>001</option><option>002</option><option>003</option>
+            <option>004</option><option>005</option><option>006</option>
+          </optgroup>
+          <optgroup label="1st Floor">
+            <option>101</option><option>102</option><option>103</option>
+            <option>104</option><option>105</option><option>106</option>
+          </optgroup>
+          <optgroup label="2nd Floor">
+            <option>201</option><option>202</option><option>203</option>
+            <option>204</option><option>205</option><option>206</option>
+          </optgroup>
+          <optgroup label="3rd Floor">
+            <option>301</option><option>302</option><option>303</option>
+            <option>304</option><option>305</option><option>306</option>
+          </optgroup>
+          <optgroup label="4th Floor">
+            <option>401</option><option>402</option><option>403</option>
+            <option>404</option><option>405</option><option>406</option>
+          </optgroup>
+          <optgroup label="5th Floor">
+            <option>501</option><option>502</option><option>503</option>
+            <option>504</option><option>505</option><option>506</option>
+          </optgroup>
+          <optgroup label="6th Floor">
+            <option>601</option><option>602</option><option>603</option>
+            <option>604</option><option>605</option><option>606</option>
+          </optgroup>
+          <optgroup label="7th Floor">
+            <option>701</option><option>702</option><option>703</option>
+            <option>704</option><option>705</option><option>706</option>
+          </optgroup>
+        </select>
+      </div>
+    </div>
+    <!-- <p class="hint">⚠️ Building + Wing + Flat No identifies your entry. Same address = <strong>update</strong> existing row.</p> -->
+  </div>
+
+  <!-- VOLUNTEER -->
+  <div class="section">
+    <div class="section-title">🙌 Volunteer (Optional)</div>
+    <div class="field">
+      <label>Select events you'd like to volunteer for</label>
+      <div class="pill-group">
+        <label class="pill"><input type="checkbox" name="vol" value="Decoration"> Decoration</label>
+        <label class="pill"><input type="checkbox" name="vol" value="Food Stall"> Food Stall</label>
+        <label class="pill"><input type="checkbox" name="vol" value="Cultural Program"> Cultural Program</label>
+        <label class="pill"><input type="checkbox" name="vol" value="Security"> Security</label>
+        <label class="pill"><input type="checkbox" name="vol" value="Photography"> Photography</label>
+        <label class="pill"><input type="checkbox" name="vol" value="Registration Desk"> Registration Desk</label>
+        <label class="pill"><input type="checkbox" name="vol" value="Cleanup"> Cleanup</label>
+      </div>
+    </div>
+  </div>
+
+  <!-- PARTICIPANTS -->
+  <div class="section">
+    <div class="section-title">👥 Participants</div>
+
+    <div class="field">
+      <label>Number of Participants <span class="req">*</span></label>
+      <select id="numParticipants" required>
+        <option value="">— Select count —</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+      </select>
+    </div>
+
+    <div id="pFields"></div>
+  </div>
+
+  <button type="submit" class="submit-btn" id="submitBtn">🪔 Register Now</button>
+
+</form>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+<script>
+// ══════════════════════════════════════════════
+//  ⚠️  PASTE YOUR APPS SCRIPT WEB APP URL HERE
+// ══════════════════════════════════════════════
+const SCRIPT_URL = "YOUR_APPS_SCRIPT_URL_HERE";
+
+// ── BUILDING → WING MAP ───────────────────────
+const WINGS = {
+  "Genevieve": ["A","B","C","D","E"],
+  "Morgana":   ["A","B","C","D"],
+  "Muriel":    ["A","B","C","D"]
+};
+
+document.getElementById("building").addEventListener("change", function () {
+  const wingEl = document.getElementById("wing");
+  const wings  = WINGS[this.value] || [];
+  wingEl.innerHTML = `<option value="">— Select Wing —</option>`;
+  wings.forEach(w => {
+    const opt = document.createElement("option");
+    opt.value = w; opt.textContent = "Wing " + w;
+    wingEl.appendChild(opt);
+  });
+  wingEl.disabled = wings.length === 0;
+});
+
+// Events participants can join
+const EVENTS = [
+  "Drawing",
+  "Solo Dance",
+  "Group Dance",
+  "Singing",
+  "Chess",
+  "Essay Writing",
+  "Special Act"
+];
+
+// ── DYNAMIC PARTICIPANT FIELDS ────────────────
+document.getElementById("numParticipants").addEventListener("change", function () {
+  const n = parseInt(this.value) || 0;
+  const wrap = document.getElementById("pFields");
+  wrap.innerHTML = "";
+
+  for (let i = 1; i <= n; i++) {
+    const card = document.createElement("div");
+    card.className = "p-card";
+    card.innerHTML = `
+      <div class="p-card-title">
+        <span class="p-num">${i}</span> Participant ${i}
+      </div>
+      <div class="field">
+        <label>Participant Name <span class="req">*</span></label>
+        <input type="text" id="p${i}_name" placeholder="Full name" required />
+      </div>
+      <div class="field">
+        <label>Participant Age <span class="req">*</span></label>
+        <input type="number" id="p${i}_age" placeholder="Age" min="1" max="100" required />
+      </div>
+      <div class="field" style="margin-bottom:0">
+        <label>Participant Events</label>
+        <div class="pill-group">
+          ${EVENTS.map(ev =>
+            `<label class="pill">
+              <input type="checkbox" class="ev${i}" value="${ev}"> ${ev}
+            </label>`
+          ).join("")}
+        </div>
+      </div>
+    `;
+    wrap.appendChild(card);
+  }
+});
+
+// ── FORM SUBMIT ───────────────────────────────
+document.getElementById("regForm").addEventListener("submit", async function (e) {
+  e.preventDefault();
+
+  // Basic validation
+  const required = ["name","email","whatsapp","building","wing","flatno","numParticipants"];
+  let valid = true;
+  required.forEach(id => {
+    const el = document.getElementById(id);
+    if (!el || !el.value.trim()) {
+      if (el) el.classList.add("invalid");
+      valid = false;
+    } else {
+      if (el) el.classList.remove("invalid");
+    }
+  });
+
+  // Whatsapp pattern
+  const wa = document.getElementById("whatsapp");
+  if (wa && !/^[0-9]{10}$/.test(wa.value.trim())) {
+    wa.classList.add("invalid"); valid = false;
+  }
+
+  if (!valid) {
+    showToast("⚠️ Please fill all required fields correctly.", "error");
+    return;
+  }
+
+  const btn = document.getElementById("submitBtn");
+  btn.disabled = true;
+  btn.innerHTML = '<span class="spinner"></span> Submitting…';
+
+  const count = parseInt(document.getElementById("numParticipants").value) || 0;
+
+  const volunteers = [...document.querySelectorAll('input[name="vol"]:checked')]
+    .map(el => el.value);
+
+  const participants = [];
+  for (let i = 1; i <= count; i++) {
+    participants.push({
+      name:   document.getElementById(`p${i}_name`)?.value?.trim() || "",
+      age:    document.getElementById(`p${i}_age`)?.value?.trim()  || "",
+      events: [...document.querySelectorAll(`.ev${i}:checked`)].map(el => el.value)
+    });
+  }
+
+  const payload = {
+    name:            document.getElementById("name").value.trim(),
+    email:           document.getElementById("email").value.trim(),
+    whatsapp:        document.getElementById("whatsapp").value.trim(),
+    building:        document.getElementById("building").value.trim(),
+    wing:            document.getElementById("wing").value.trim(),
+    flatno:          document.getElementById("flatno").value.trim(),
+    volunteer:       volunteers,
+    numParticipants: count,
+    participants
+  };
+
+  try {
+    const res  = await fetch(SCRIPT_URL, {
+      method: "POST",
+      body: JSON.stringify(payload)
+    });
+    const text = await res.text();
+
+    if (text === "SUCCESS" || text === "UPDATED") {
+      showToast(
+        text === "UPDATED"
+          ? "✅ Registration updated successfully!"
+          : "🎉 Registered! See you at the Utsav!",
+        "success"
+      );
+      document.getElementById("regForm").reset();
+      document.getElementById("pFields").innerHTML = "";
+    } else {
+      throw new Error(text);
+    }
+  } catch (err) {
+    showToast("❌ Submission failed. Check URL or try again.", "error");
+    console.error(err);
+  }
+
+  btn.disabled = false;
+  btn.innerHTML = "🪔 Register Now";
+});
+
+// ── TOAST ─────────────────────────────────────
+function showToast(msg, type) {
+  const t = document.getElementById("toast");
+  t.textContent = msg;
+  t.className = `toast ${type} show`;
+  setTimeout(() => { t.className = "toast"; }, 4500);
+}
+</script>
+</body>
+</html>
